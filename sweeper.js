@@ -7,18 +7,18 @@ const ethers_provider_bundle_1 = require("@flashbots/ethers-provider-bundle");
 
 // 2. Setup a standard provider
 const provider = new providers.JsonRpcProvider(
-    
+    //I run a local node, you'll probably use a service like infura
 	'http://localhost:8546'
 )
 const wsProvider = new providers.WebSocketProvider(
-    
+    //I run a local node, you'll probably use a service like infura
 	'ws://localhost:8546'
 )
 
 // 3. this is the compromised wallet private key you want to sweep
 const authSigner = new Wallet(
     
-	'ac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80',
+	'',
 	provider
 )
 
@@ -170,7 +170,7 @@ const start = async ()  =>{
         
             provider.getTransaction(tx).then(transaction =>{
                 try{
-                if(transaction.to === "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266"){
+                if(transaction.to === ""){
                     console.log("Transaction found, Initiating Sweep!!")
                     sweep(transaction)
                     
